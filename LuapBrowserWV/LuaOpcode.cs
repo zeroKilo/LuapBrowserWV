@@ -111,8 +111,8 @@ namespace LuapBrowserWV
                     sb.Append("]");
                     break;
                 case 7://OP_SETGLOBAL
-                    if (func.global.constants.Count > Bx)
-                        sb.Append("GLOBALS[" + func.global.constants[(int)Bx] + "] = R" + A);
+                    if (func.constants.Count > Bx)
+                        sb.Append("GLOBALS[" + func.constants[(int)Bx] + "] = R" + A);
                     break;
                 case 8://OP_SETUPVAL
                     sb.Append(func.upVars[(int)B] + " = R" + A);

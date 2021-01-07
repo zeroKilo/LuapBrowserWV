@@ -47,7 +47,6 @@ namespace LuapBrowserWV
         public List<uint> lineInfo = new List<uint>();
         public List<LocalVar> locals = new List<LocalVar>();
         public List<string> upVars = new List<string>();
-        public LuaFunction global;
 
         public LuaFunction(Stream s)
         {

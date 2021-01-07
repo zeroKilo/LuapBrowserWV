@@ -37,14 +37,6 @@ namespace LuapBrowserWV
             sizeLuaNumber = (byte)m.ReadByte();
             useIntegralNumbers = m.ReadByte() != 0;
             mainFunc = new LuaFunction(m);
-            ApplyGlobalReference(mainFunc);
-        }
-
-        public void ApplyGlobalReference(LuaFunction f)
-        {
-            f.global = mainFunc;
-            foreach (LuaFunction sub in f.subFunc)
-                ApplyGlobalReference(sub);
         }
 
         public byte[] Save()
