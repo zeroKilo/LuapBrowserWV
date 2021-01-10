@@ -50,6 +50,48 @@ namespace LuapBrowserWV
             "OP_VARARG"     //25
         };
 
+        public static string[] opcLayoutHint = new string[]
+        {
+            "[A][B]",           //00 "OP_MOVE",     
+            "[A][Bx]",          //01 "OP_LOADK",    
+            "[A][B][C]",        //02 "OP_LOADBOOL", 
+            "[A][B]",           //03 "OP_LOADNIL",  
+            "[A][B]",           //04 "OP_GETUPVAL", 
+            "[A][Bx]",          //05 "OP_GETGLOBAL",
+            "[A][B][sC]",       //06 "OP_GETTABLE", 
+            "[A][Bx]",          //07 "OP_SETGLOBAL",
+            "[A][B]",           //08 "OP_SETUPVAL", 
+            "[A][sB][sC]",      //09 "OP_SETTABLE", 
+            "[A][B][C]",        //0A "OP_NEWTABLE", 
+            "[A][B][sC]",       //0B "OP_SELF",     
+            "[A][sB][sC]",      //0C "OP_ADD",      
+            "[A][sB][sC]",      //0D "OP_SUB",      
+            "[A][sB][sC]",      //0E "OP_MUL",      
+            "[A][sB][sC]",      //0F "OP_DIV",      
+            "[A][sB][sC]",      //10 "OP_MOD",      
+            "[A][sB][sC]",      //11 "OP_POW",      
+            "[A][B]",           //12 "OP_UNM",      
+            "[A][B]",           //13 "OP_NOT",      
+            "[A][B]",           //14 "OP_LEN",      
+            "[A][B][C]",        //15 "OP_CONCAT",   
+            "[sBx]",            //16 "OP_JMP",      
+            "[A][sB][sC]",      //17 "OP_EQ",       
+            "[A][sB][sC]",      //18 "OP_LT",       
+            "[A][sB][sC]",      //19 "OP_LE",       
+            "[A][C]",           //1A "OP_TEST",     
+            "[A][B][C]",        //1B "OP_TESTSET",  
+            "[A][B][C]",        //1C "OP_CALL",     
+            "[A][B][C]",        //1D "OP_TAILCALL", 
+            "[A][B]",           //1E "OP_RETURN",   
+            "[A][sBx]",         //1F "OP_FORLOOP",  
+            "[A][sBx]",         //20 "OP_FORPREP",  
+            "[A][C]",           //21 "OP_TFORLOOP", 
+            "[A][B][C]",        //22 "OP_SETLIST",  
+            "[A]",              //23 "OP_CLOSE",    
+            "[A][Bx]",          //24 "OP_CLOSURE",  
+            "[A][B]"            //25 "OP_VARARG"    
+        };
+
         public uint ID;
         public uint A, B, C;
         public uint Bx;
@@ -126,7 +168,7 @@ namespace LuapBrowserWV
                 case 0xA://OP_NEWTABLE
                     sb.Append("R" + A + " = {} (size = " + B + ", " + C + ")");
                     break;
-                case 0xB:
+                case 0xB://OP_SELF
                     sb.Append("R" + (A + 1) + " = R" + B + "; R" + A + " = R" + B + "[");
                     sb.Append(GetConstantOrRegister(func, sC));
                     sb.Append("]");

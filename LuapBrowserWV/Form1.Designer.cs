@@ -81,6 +81,13 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.opcodePreview = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -171,6 +178,7 @@
             this.listBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listBox1.Font = new System.Drawing.Font("Courier New", 8.25F);
             this.listBox1.FormattingEnabled = true;
+            this.listBox1.HorizontalScrollbar = true;
             this.listBox1.IntegralHeight = false;
             this.listBox1.ItemHeight = 14;
             this.listBox1.Location = new System.Drawing.Point(0, 0);
@@ -279,6 +287,8 @@
             // splitContainer2
             // 
             this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer2.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.splitContainer2.IsSplitterFixed = true;
             this.splitContainer2.Location = new System.Drawing.Point(3, 3);
             this.splitContainer2.Name = "splitContainer2";
             // 
@@ -303,10 +313,12 @@
             this.listBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listBox2.Font = new System.Drawing.Font("Courier New", 8.25F);
             this.listBox2.FormattingEnabled = true;
+            this.listBox2.HorizontalScrollbar = true;
             this.listBox2.IntegralHeight = false;
             this.listBox2.ItemHeight = 14;
             this.listBox2.Location = new System.Drawing.Point(0, 0);
             this.listBox2.Name = "listBox2";
+            this.listBox2.ScrollAlwaysVisible = true;
             this.listBox2.Size = new System.Drawing.Size(196, 371);
             this.listBox2.TabIndex = 1;
             this.listBox2.SelectedIndexChanged += new System.EventHandler(this.listBox2_SelectedIndexChanged);
@@ -393,10 +405,12 @@
             this.listBox3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listBox3.Font = new System.Drawing.Font("Courier New", 8.25F);
             this.listBox3.FormattingEnabled = true;
+            this.listBox3.HorizontalScrollbar = true;
             this.listBox3.IntegralHeight = false;
             this.listBox3.ItemHeight = 14;
             this.listBox3.Location = new System.Drawing.Point(3, 3);
             this.listBox3.Name = "listBox3";
+            this.listBox3.ScrollAlwaysVisible = true;
             this.listBox3.Size = new System.Drawing.Size(452, 371);
             this.listBox3.TabIndex = 1;
             this.listBox3.DoubleClick += new System.EventHandler(this.listBox3_DoubleClick);
@@ -445,6 +459,8 @@
             // splitContainer3
             // 
             this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer3.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.splitContainer3.IsSplitterFixed = true;
             this.splitContainer3.Location = new System.Drawing.Point(3, 3);
             this.splitContainer3.Name = "splitContainer3";
             // 
@@ -454,6 +470,13 @@
             // 
             // splitContainer3.Panel2
             // 
+            this.splitContainer3.Panel2.Controls.Add(this.opcodePreview);
+            this.splitContainer3.Panel2.Controls.Add(this.button5);
+            this.splitContainer3.Panel2.Controls.Add(this.button4);
+            this.splitContainer3.Panel2.Controls.Add(this.textBox6);
+            this.splitContainer3.Panel2.Controls.Add(this.label8);
+            this.splitContainer3.Panel2.Controls.Add(this.textBox7);
+            this.splitContainer3.Panel2.Controls.Add(this.label9);
             this.splitContainer3.Panel2.Controls.Add(this.button2);
             this.splitContainer3.Panel2.Controls.Add(this.textBox4);
             this.splitContainer3.Panel2.Controls.Add(this.label5);
@@ -476,10 +499,12 @@
             this.listBox4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listBox4.Font = new System.Drawing.Font("Courier New", 8.25F);
             this.listBox4.FormattingEnabled = true;
+            this.listBox4.HorizontalScrollbar = true;
             this.listBox4.IntegralHeight = false;
             this.listBox4.ItemHeight = 14;
             this.listBox4.Location = new System.Drawing.Point(0, 0);
             this.listBox4.Name = "listBox4";
+            this.listBox4.ScrollAlwaysVisible = true;
             this.listBox4.Size = new System.Drawing.Size(198, 371);
             this.listBox4.TabIndex = 1;
             this.listBox4.SelectedIndexChanged += new System.EventHandler(this.listBox4_SelectedIndexChanged);
@@ -508,17 +533,17 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(8, 174);
+            this.button2.Location = new System.Drawing.Point(9, 239);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(227, 22);
             this.button2.TabIndex = 11;
-            this.button2.Text = "Make from ID,A,B,C";
+            this.button2.Text = "Make from [ID][A][sB][sC]";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(37, 141);
+            this.textBox4.Location = new System.Drawing.Point(38, 161);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(198, 20);
             this.textBox4.TabIndex = 10;
@@ -526,15 +551,15 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(5, 144);
+            this.label5.Location = new System.Drawing.Point(6, 164);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(14, 13);
+            this.label5.Size = new System.Drawing.Size(19, 13);
             this.label5.TabIndex = 9;
-            this.label5.Text = "C";
+            this.label5.Text = "sC";
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(37, 115);
+            this.textBox3.Location = new System.Drawing.Point(38, 135);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(198, 20);
             this.textBox3.TabIndex = 8;
@@ -542,15 +567,15 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(5, 118);
+            this.label4.Location = new System.Drawing.Point(6, 138);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(14, 13);
+            this.label4.Size = new System.Drawing.Size(19, 13);
             this.label4.TabIndex = 7;
-            this.label4.Text = "B";
+            this.label4.Text = "sB";
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(37, 89);
+            this.textBox2.Location = new System.Drawing.Point(38, 109);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(198, 20);
             this.textBox2.TabIndex = 6;
@@ -558,7 +583,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(5, 92);
+            this.label3.Location = new System.Drawing.Point(6, 112);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(14, 13);
             this.label3.TabIndex = 5;
@@ -567,7 +592,7 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(37, 62);
+            this.comboBox1.Location = new System.Drawing.Point(38, 82);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(198, 21);
             this.comboBox1.TabIndex = 4;
@@ -575,7 +600,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(5, 65);
+            this.label2.Location = new System.Drawing.Point(6, 85);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(29, 13);
             this.label2.TabIndex = 3;
@@ -583,7 +608,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(8, 34);
+            this.button1.Location = new System.Drawing.Point(9, 54);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(227, 22);
             this.button1.TabIndex = 2;
@@ -593,7 +618,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(37, 4);
+            this.textBox1.Location = new System.Drawing.Point(38, 24);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(198, 20);
             this.textBox1.TabIndex = 1;
@@ -601,7 +626,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(5, 7);
+            this.label1.Location = new System.Drawing.Point(6, 27);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(26, 13);
             this.label1.TabIndex = 0;
@@ -629,6 +654,67 @@
             this.toolStripComboBox1.Name = "toolStripComboBox1";
             this.toolStripComboBox1.Size = new System.Drawing.Size(121, 25);
             this.toolStripComboBox1.SelectedIndexChanged += new System.EventHandler(this.toolStripComboBox1_SelectedIndexChanged);
+            // 
+            // textBox6
+            // 
+            this.textBox6.Location = new System.Drawing.Point(38, 187);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(198, 20);
+            this.textBox6.TabIndex = 15;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(6, 190);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(19, 13);
+            this.label8.TabIndex = 14;
+            this.label8.Text = "Bx";
+            // 
+            // textBox7
+            // 
+            this.textBox7.Location = new System.Drawing.Point(38, 213);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(198, 20);
+            this.textBox7.TabIndex = 13;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(6, 216);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(24, 13);
+            this.label9.TabIndex = 12;
+            this.label9.Text = "sBx";
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(9, 267);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(227, 22);
+            this.button4.TabIndex = 16;
+            this.button4.Text = "Make from [ID][A][Bx]";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(9, 295);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(227, 22);
+            this.button5.TabIndex = 17;
+            this.button5.Text = "Make from [ID][A][sBx]";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // opcodePreview
+            // 
+            this.opcodePreview.AutoSize = true;
+            this.opcodePreview.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.opcodePreview.Location = new System.Drawing.Point(6, 3);
+            this.opcodePreview.Name = "opcodePreview";
+            this.opcodePreview.Size = new System.Drawing.Size(0, 18);
+            this.opcodePreview.TabIndex = 18;
             // 
             // Form1
             // 
@@ -730,6 +816,13 @@
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Label opcodePreview;
     }
 }
 

@@ -139,8 +139,11 @@ namespace LuapBrowserWV
             comboBox1.SelectedIndex = (int)op.ID;
             textBox1.Text = func.byteCode[o].ToString("X8");
             textBox2.Text = op.A.ToString();
-            textBox3.Text = op.B.ToString();
-            textBox4.Text = op.C.ToString();
+            textBox3.Text = op.sB.ToString();
+            textBox4.Text = op.sC.ToString();
+            textBox6.Text = op.Bx.ToString();
+            textBox7.Text = op.sBx.ToString();
+            opcodePreview.Text = LuaOpcode.opcNames[op.ID] + " " + LuaOpcode.opcLayoutHint[op.ID];
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -172,9 +175,18 @@ namespace LuapBrowserWV
             else
                 func = luap.entries[n].script.mainFunc.subFunc[m - 1];
             uint ID = (uint)comboBox1.SelectedIndex;
-            uint A = Convert.ToUInt32(textBox2.Text.Trim());
-            uint B = Convert.ToUInt32(textBox3.Text.Trim());
-            uint C = Convert.ToUInt32(textBox4.Text.Trim());
+            uint A = Convert.ToUInt32(textBox2.Text.Trim()); 
+            int sB = Convert.ToInt32(textBox3.Text.Trim());
+            int sC = Convert.ToInt32(textBox4.Text.Trim());
+            uint B, C;
+            if (sB < 0)
+                B = (uint)((0xFF) - sB);
+            else
+                B = (uint)sB;
+            if (sC < 0)
+                C = (uint)((0xFF) - sC);
+            else
+                C = (uint)sC;
             func.byteCode[o] = ID | (A << 6) | (C << 14) | (B << 23);
             RefreshFunction();
         }
@@ -355,6 +367,44 @@ namespace LuapBrowserWV
                     func.constants[o].value = textBox5.Text;
                     break;
             }
+            RefreshFunction();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            int n = listBox1.SelectedIndex;
+            int m = toolStripComboBox1.SelectedIndex;
+            int o = listBox4.SelectedIndex;
+            if (n == -1 || m == -1 || o == -1)
+                return;
+            LuaFunction func;
+            if (m == 0)
+                func = luap.entries[n].script.mainFunc;
+            else
+                func = luap.entries[n].script.mainFunc.subFunc[m - 1];
+            uint ID = (uint)comboBox1.SelectedIndex;
+            uint A = Convert.ToUInt32(textBox2.Text.Trim());
+            uint Bx = Convert.ToUInt32(textBox6.Text.Trim());
+            func.byteCode[o] = ID | (A << 6) | (Bx << 14);
+            RefreshFunction();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            int n = listBox1.SelectedIndex;
+            int m = toolStripComboBox1.SelectedIndex;
+            int o = listBox4.SelectedIndex;
+            if (n == -1 || m == -1 || o == -1)
+                return;
+            LuaFunction func;
+            if (m == 0)
+                func = luap.entries[n].script.mainFunc;
+            else
+                func = luap.entries[n].script.mainFunc.subFunc[m - 1];
+            uint ID = (uint)comboBox1.SelectedIndex;
+            uint A = Convert.ToUInt32(textBox2.Text.Trim());
+            uint Bx = Convert.ToUInt32(textBox7.Text.Trim()) + 0x1FFFF;
+            func.byteCode[o] = ID | (A << 6) | (Bx << 14);
             RefreshFunction();
         }
     }
